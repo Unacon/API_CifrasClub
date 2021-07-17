@@ -26,7 +26,7 @@ namespace WebApi2_Produtos.Controllers
         public IEnumerable<Musica> GetMusicaPorNome(string nome)
         {
             return repositorio.GetAll().Where(
-                p => string.Equals(p.Nome, nome, StringComparison.OrdinalIgnoreCase));
+                p => p.Nome.ToUpper().Contains(nome.ToUpper()));
         }
         public IEnumerable<Musica> GetMusicaPorAno(int ano)
         {
@@ -37,12 +37,12 @@ namespace WebApi2_Produtos.Controllers
         public IEnumerable<Musica> GetMusicaPorBanda(string banda)
         {
             return repositorio.GetAll().Where(
-                p => string.Equals(p.Banda, banda, StringComparison.OrdinalIgnoreCase));
+                p => p.Banda.ToUpper().Contains(banda.ToUpper()));
         }
         public IEnumerable<Musica> GetMusicaPorCompositor(string compositor)
         {
             return repositorio.GetAll().Where(
-                p => string.Equals(p.Compositor, compositor, StringComparison.OrdinalIgnoreCase));
+                p => p.Compositor.ToUpper().Contains(compositor.ToUpper()));
         }
         public HttpResponseMessage PostMusica(Musica item)
         {
